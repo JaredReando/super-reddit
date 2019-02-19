@@ -16,6 +16,7 @@ class Post extends React.Component {
     let newVote = this.state.votes + 1;
     this.setState({votes: newVote});
     console.log(this.state.votes);
+    console.log(this.props.postId)
   }
 
   handleDownVote() {
