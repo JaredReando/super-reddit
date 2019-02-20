@@ -7,10 +7,10 @@ function NewPostForm(props){
   let _newPost = null;
 
   function handleNewPostFormSubmission(event) {
-    console.log("Form Submitted!", props);
+    // console.log("Form Submitted!", props);
     event.preventDefault();
     let newPost = _newPost.value;
-    props.firstRefToOriginalMethodInMain({text: newPost, id: v4()});
+    props.firstRefToOriginalMethodInMain({text: newPost, votes: 0, id: v4()});
     _newPost.value = '';
   }
 

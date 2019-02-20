@@ -1,12 +1,12 @@
 import React from "react";
-import Post from "./Post";
+import PostTwo from "./PostTwo";
 
 function PostList(props) {
-  console.log("props List: ",props.postList);
+  // console.log("props List: ",props.postList);
 
-  function returnPostKey() {
-    console.log("function triggered")
-    console.log(props);
+  function returnPostKey(post) {
+    console.log(post.text)
+    // console.log(props);
   }
 
   return (
@@ -14,15 +14,16 @@ function PostList(props) {
         <h2>Post List</h2>
 
         {props.postList.map((post) =>
-          <div>
-            <h1 onClick={returnPostKey}>{post.id} </h1>
-            <Post
+          <div style={{border: "1px solid red"}} key={post.id} onClick={returnPostKey}>
+            <PostTwo
               text={post.text}
-              key={post.id}
-              postId={post.id}
+              votes={post.votes}
+              onhandleVote={props.onhandleVote}
             />
+          <button onClick={()=> props.onhandleVote(post, 'up')}>Up Vote</button>
+            <button onClick={()=> props.onhandleVote(post, 'down')}>Down Vote</button>
           </div>
-      )}
+        )}
 
       </main>
   );

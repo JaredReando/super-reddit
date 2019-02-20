@@ -8,21 +8,21 @@ class Post extends React.Component {
     this.state = {
       votes: 0
     }
-    this.handleUpVote = this.handleUpVote.bind(this);
+    this.handleVote = this.handleVote.bind(this);
     this.handleDownVote = this.handleDownVote.bind(this);
   }
 
-  handleUpVote() {
+  handleVote() {
     let newVote = this.state.votes + 1;
     this.setState({votes: newVote});
-    console.log(this.state.votes);
-    console.log(this.props.postId)
+    // console.log(this.state.votes);
+    // console.log(this.props.postId)
   }
 
   handleDownVote() {
     let newVote = this.state.votes - 1;
     this.setState({votes: newVote});
-    console.log(this.state.votes);
+    // console.log(this.state.votes);
   }
 
   render() {
@@ -30,7 +30,7 @@ class Post extends React.Component {
       <div>
         <h3>{this.props.text}</h3>
         <p>Vote Count: {this.state.votes}</p>
-        <button onClick={this.handleUpVote}>Up Vote</button>
+        <button onClick={this.handleVote}>Up Vote</button>
         <button onClick={this.handleDownVote}>Down Vote</button>
       </div>
     );
