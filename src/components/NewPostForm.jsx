@@ -7,10 +7,9 @@ function NewPostForm(props){
   let _newPost = null;
 
   function handleNewPostFormSubmission(event) {
-    // console.log("Form Submitted!", props);
     event.preventDefault();
     let newPost = _newPost.value;
-    props.firstRefToOriginalMethodInMain({text: newPost, votes: 0, id: v4()});
+    props.onCreateNewPost({text: newPost, votes: 0, id: v4()});
     _newPost.value = '';
   }
 
@@ -28,7 +27,7 @@ function NewPostForm(props){
 }
 
 NewPostForm.propTypes = {
-  firstRefToOriginalMethodInMain: PropTypes.func
+  onCreateNewPost: PropTypes.func
 }
 
 export default NewPostForm;

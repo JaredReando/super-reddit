@@ -6,16 +6,13 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      masterPostList: [],
-      propTwo: "thing",
-      propThree: "otherTHing"
+      masterPostList: []
     };
-    this.originalMethodInMain = this.originalMethodInMain.bind(this);
+    this.handleCreateNewPost = this.handleCreateNewPost.bind(this);
     this.handleVote = this.handleVote.bind(this);
   }
 
-  originalMethodInMain(newPostObject) {
-    // console.log("Adding new post run successfully with string: ", newPostObject.text);
+  handleCreateNewPost(newPostObject) {
     let newMasterPostList = this.state.masterPostList.slice();
     newMasterPostList.push(newPostObject);
     this.setState({masterPostList: newMasterPostList});
@@ -34,7 +31,6 @@ class Main extends React.Component {
 
     let newPostList = this.updatePostArray(postIndex, newPostObject, this.state.masterPostList);
 
-    // console.log(this.state.masterPostList)
     let sortedPostList = [...newPostList].sort(function(a, b) { return b.votes - a.votes});
 
     this.setState({masterPostList: sortedPostList})
@@ -54,28 +50,18 @@ class Main extends React.Component {
     return newPostArray;
   }
 
-  // handleDownVote() {
-  //   let newVote = this.state.votes - 1;
-  //   this.setState({votes: newVote});
-  //   console.log(this.state.votes);
-  // }
-  //
-  // masterUpVote(postObject) {
-  //   post
-  // }
-
   render() {
     return (
       <div className="container">
         <main>
           <h1>Super Reddit</h1>
           <NewPostForm
-            firstRefToOriginalMethodInMain = {this.originalMethodInMain}
+            onCreateNewPost = {this.handleCreateNewPost}
           />
 
           <PostList
             postList = {this.state.masterPostList}
-            onhandleVote={this.handleVote}
+            onVote={this.handleVote}
           />
         </main>
       </div>

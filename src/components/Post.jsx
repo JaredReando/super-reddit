@@ -15,14 +15,11 @@ class Post extends React.Component {
   handleVote() {
     let newVote = this.state.votes + 1;
     this.setState({votes: newVote});
-    // console.log(this.state.votes);
-    // console.log(this.props.postId)
   }
 
   handleDownVote() {
     let newVote = this.state.votes - 1;
     this.setState({votes: newVote});
-    // console.log(this.state.votes);
   }
 
   render() {
